@@ -1,10 +1,9 @@
-body > table , button, div{
-    margin-top: 200px;
+body > table {
+    margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
-
 
 
 table#myBoard td{
@@ -15,6 +14,13 @@ table#myBoard td{
     vertical-align: middle;
     font: bold 36px ;
 }
+.header {
+    background-size: cover;
+    border-bottom: 5px solid #000;
+    color: #fff;
+    padding: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
 
 
  td#cell1, td#cell2, td#cell3, td#cell4, td#cell5, td#cell6 {
@@ -31,6 +37,9 @@ td#cell1, td#cell2, td#cell5, td#cell4, td#cell7, td#cell8 {
 div#boardMessage {
     margin: 0.5em;
     font: 24px sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 div#reset{
@@ -42,10 +51,26 @@ div#reset{
     border: solid rgb(15, 0, 68) 1px;
     background-color: rgb(255, 255, 255);
         border-radius: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
 }
 div#reset:hover{
     background-color: rgb(42, 127, 184);
 }
 td:hover{
     background-color: rgb(51, 90, 126);
+}
+body > div .statuseDiv{
+    vertical-align: middle;
+flex-direction: row-reverse;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#contaner {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    text-align: center;
 }
