@@ -1,27 +1,34 @@
-
 $(document).ready(function () {
 
+    //declaring a function to creat array and connactet to the table in html 
+    //and  return board  to 
     const gameBoard = function arrayBoard() {
 
-        let board = ['','','',
-                    '','','',
-                    '','',''];
+        let board = ['', '', '',
+            '', '', '',
+            '', '', ''
+        ];
 
         $(".cells").each(function (index) {
             board[index] = $(this).text();
         });
         return board;
     }
+
+    //  declaring variable to use it in change turn function
     let turn = 1;
+    //  declaring variable to count mve
     let moveCuont = 0;
-    let Tiegame = 0 ;
-    let player1Wins = 0;
-    let player2Wins = 0;
-// create function to changeTurn between x and o 
+    //  declaring variable to cunt tie 
+    let Tiegame = 0;
+    //  declaring variable  to cunt player1 Wins
+    let player1Wins = $('#p1');
 
+    //  declaring variable  to cunt player2 Wins
+    let player2Wins = $('#p2');
 
-
-// create a function wtih 3 arguomnt and convare them to gather 
+    //create a function with 3 argument and convert them to gather
+    //to use it in winningCase
     const checkWinner = function conditions(a, b, c) {
 
         if (a === 'X' && b === 'X' && c === 'X') {
@@ -34,7 +41,7 @@ $(document).ready(function () {
     }
 
 
-// create a function take bord as arguomnt and check the winningCase
+    //declaring a function take board as argument and check the winning Cases
     const winningCase = function checkWin(board) {
 
         return checkWinner(board[0], board[1], board[2]) +
@@ -48,112 +55,89 @@ $(document).ready(function () {
     }
 
 
-
+    //declaring a function take result as argument and check the result
+    //to display wining Message
     const gameOver = function gameOverMessage(result) {
 
         let divMessage = $("#boardMessage");
         if (result > 0) {
-            player1Wins++
             divMessage.text("X win!");
             divMessage.css('color', 'red')
             return;
         } else if (result < 0) {
-            player2Wins++
+            //player2Wins++;
             divMessage.text("O win!");
             return;
-        } else  {
-            Tiegame ++
+        } else {
+            Tiegame++
             divMessage.text("Tie game.");
             divMessage.css('color', 'blue')
         }
-    }
-    const reset = function resetGame() {
+    };
 
+    //declaring a function to reset Game board 
+    const reset = function resetGame() {
+        moveCuont = 0
+        $(".cells").unbind('click').one("click", changeTurn)
         $(".cells").text('');
         const divMessage = $("#boardMessage");
         divMessage.css('color', 'gray');
-        divMessage.text('Click a Cell');
-    }
-    
-    let board = gameBoard();
-    result = checkWinner(board);
-    if (result !== 0) {
-        showGameOver(result);
-        return;
-    }
+        divMessage.text('');
+    };
+
+
     const changeTurn = function Turne() {
 
-        let board , result;
-    
+        let board, result;
+
         let player1 = '';
         let player2 = '';
 
         if (turn === 1) {
 
-            if (player1 !== '' || winningCase(gameBoard()) !== 0 ||player2 !== '') {
-             
+            if (player1 !== '' || winningCase(gameBoard()) !== 0 ||
+                player2 !== '') {
+
                 return;
-            }
+            };
+ 
+            player1 = "X"
+            event.target.innerHTML = player1
+            board = gameBoard();
+            result = winningCase(board);
+            if (result !== 0) {
+                gameOver(result);
+                return;
+            };
 
-            if ($('td.cells').is(':empty')) {
+            turn++;
 
-                player1 = 'X'
-                event.target.innerHTML = player1
-                 board = gameBoard();
-                 result = winningCase(board);
-                if (result !== 0) {
-                    gameOver(result);
-                    return;
-                }
-            
-                turn++
-
-                moveCuont ++
-
-
-            } else {
-                return
-            }
+            moveCuont++;
 
         } else {
+            if (player1 !== '' || winningCase(gameBoard()) !== 0 ||
+                player2 !== '') {
 
-            if (player1 !== '' || winningCase(gameBoard()) !== 0 || player2 !== '') {
-                 
                 return;
-            }
-
-            if ($('td.cells').is(':empty')) {
-
-                player2 = 'O'
-                event.target.innerHTML = player2
-                board = gameBoard();
-                result = winningCase(board);
-                if (result !== 0) { 
-                    gameOver(result);
-                    return;
-                }
-
-                turn--
-
-                moveCuont ++
-               
-            } else {
-
-                return ;
-            }
-
-        }
-
-            result = checkWinner(board);
-            if (moveCuont === 9) {
+            };
+            player2 = 'O'
+            event.target.innerHTML = player2
+            board = gameBoard();
+            result = winningCase(board);
+            if (result !== 0) {
                 gameOver(result);
                 return;
             }
-
-    }
-
-
-    $(".cells").click(changeTurn);
+            turn--
+            moveCuont++
+        };
+        result = checkWinner(board);
+        if (moveCuont === 9) {
+            gameOver(result);
+            return;
+        }
+    };
+    $(".cells").one('click', changeTurn)
     $("#reset").click(reset);
-    reset();
+
 });

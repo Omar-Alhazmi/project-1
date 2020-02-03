@@ -1,36 +1,41 @@
+.contaner2{
+
+    /* width: 100vw;
+    height: 100vh; */
+    background-color: rgb(28, 36, 43);
+    opacity: 30%;
+
+}
+
+
 body > table {
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    background-color: rgb(17, 46, 100);
 }
 
 
 table#myBoard td{
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     border-collapse: collapse;
     text-align: center;
     vertical-align: middle;
     font: bold 36px ;
 }
-.header {
-    background-size: cover;
-    border-bottom: 5px solid #000;
-    color: #fff;
-    padding: 20px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  }
+
 
 
  td#cell1, td#cell2, td#cell3, td#cell4, td#cell5, td#cell6 {
-    border-bottom: 3px solid rgb(53, 51, 50);
-    color: rgb(53, 51, 50);
+    border-bottom: 3px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 td#cell1, td#cell2, td#cell5, td#cell4, td#cell7, td#cell8 {
-    border-right: 3px solid rgb(53, 51, 50);
-    color: rgb(53, 51, 50);
+    border-right: 3px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 
 } 
 
@@ -55,22 +60,52 @@ div#reset{
         margin-right: auto;
         text-align: center;
 }
+
 div#reset:hover{
     background-color: rgb(42, 127, 184);
 }
+
 td:hover{
     background-color: rgb(51, 90, 126);
 }
-body > div .statuseDiv{
-    vertical-align: middle;
-flex-direction: row-reverse;
-    margin-left: auto;
-    margin-right: auto;
+
+.statuseDiv{
+    width: 50%;
+    float: left;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 #contaner {
-    flex-direction: row-reverse;
-    justify-content: space-between;
+
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
 }
+
+body > div #player2{
+    text-align: left;
+    direction: rtl !important;
+    margin: 0;
+    padding: 0;
+    float: center;
+    text-justify: inter-word;
+
+
+}
+
+body > div #player1{
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    text-justify: inter-word;
+
+
+}
+
+/* {
+        font-family: Trattatello,fantasy;
+} */
+
