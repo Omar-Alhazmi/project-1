@@ -1,8 +1,7 @@
 $(document).ready(function () {
-
     //declaring a function to creat array and connactet to the table in html 
-    //and  return board  to 
-    const gameBoard = function arrayBoard() {
+    //and  return board  to
+     const gameBoard = function arrayBoard() {
 
         let board = ['', '', '',
             '', '', '',
@@ -14,20 +13,23 @@ $(document).ready(function () {
         });
         return board;
     }
-
     //  declaring variable to use it in change turn function
     let turn = 1;
     //  declaring variable to count mve
     let moveCuont = 0;
     //  declaring variable to cunt tie 
-    let Tiegame = 0;
+    let drawMatch = 0;
+    let drawMatchText = $('#ptie');
     //  declaring variable  to cunt player1 Wins
-    let player1Wins = $('#p1');
-
+    let player1Wins = 0;
+    let player1WinsText = $('#p1');
     //  declaring variable  to cunt player2 Wins
-    let player2Wins = $('#p2');
+    let player2Wins = 0;
+    let player2WinsText = $('#p2');
+    //  declaring variable  to push the winning Message
+    const divShow = document.querySelector('#win');
 
-    //create a function with 3 argument and convert them to gather
+    //create a checkWinner function with 3 argument and convert them to gather
     //to use it in winningCase
     const checkWinner = function conditions(a, b, c) {
 
@@ -39,9 +41,7 @@ $(document).ready(function () {
             return 0;
         }
     }
-
-
-    //declaring a function take board as argument and check the winning Cases
+    //declaring a winningCase function take board as argument and check the winning Cases
     const winningCase = function checkWin(board) {
 
         return checkWinner(board[0], board[1], board[2]) +
@@ -53,43 +53,64 @@ $(document).ready(function () {
             checkWinner(board[0], board[4], board[8]) +
             checkWinner(board[2], board[4], board[6]);
     }
-
-
-    //declaring a function take result as argument and check the result
+    //declaring a gameOver function take result as argument and check the result
     //to display wining Message
     const gameOver = function gameOverMessage(result) {
 
         let divMessage = $("#boardMessage");
         if (result > 0) {
+            divShow.classList.add('show')
+            player1Wins++
+            player1WinsText.text(player1Wins)
             divMessage.text("X win!");
-            divMessage.css('color', 'red')
+            divMessage.css('color', 'white')
             return;
         } else if (result < 0) {
-            //player2Wins++;
+            divShow.classList.add('show')
+            player2Wins++;
+            player2WinsText.text(player2Wins)
             divMessage.text("O win!");
             return;
         } else {
-            Tiegame++
-            divMessage.text("Tie game.");
-            divMessage.css('color', 'blue')
+            divShow.classList.add('show');
+            divMessage.text("Match   Draw .");
+            drawMatch++;
+            drawMatchText.text(drawMatch);
+            divMessage.css('color', 'white')
         }
     };
-
-    //declaring a function to reset Game board 
+    //declaring a reset function to reset Game board and players status 
     const reset = function resetGame() {
-        moveCuont = 0
-        $(".cells").unbind('click').one("click", changeTurn)
+        moveCuont = 0;
+        turn = 1;
+        $(".cells").unbind('click').one("click", main);
         $(".cells").text('');
+        divShow.classList.remove('show')
+        player1Wins = 0;
+        player1WinsText.text(player1Wins);
+        drawMatch = 0;
+        drawMatchText.text(drawMatch);
+        player2Wins = 0;
+        player2WinsText.text(player2Wins);
         const divMessage = $("#boardMessage");
         divMessage.css('color', 'gray');
         divMessage.text('');
     };
-
-
-    const changeTurn = function Turne() {
+    //declaring a rfresh function to reset Game board
+    const rfresh = function resetGame() {
+        moveCuont = 0;
+        turn = 1;
+        divShow.classList.remove('show')
+        $(".cells").unbind('click').one("click", main);
+        $(".cells").text('');
+        const divMessage = $("#boardMessage");
+        divMessage.css('color', 'gray');
+        divMessage.text('');
+    }
+    //declaring a main function to 
+    const main = function mainFunction() {
 
         let board, result;
-
         let player1 = '';
         let player2 = '';
 
@@ -103,6 +124,7 @@ $(document).ready(function () {
  
             player1 = "X"
             event.target.innerHTML = player1
+        
             board = gameBoard();
             result = winningCase(board);
             if (result !== 0) {
@@ -137,7 +159,7 @@ $(document).ready(function () {
             return;
         }
     };
-    $(".cells").one('click', changeTurn)
+    $(".cells").one('click', main)
     $("#reset").click(reset);
-
+    $("#rfresh").click(rfresh);
 });

@@ -1,76 +1,80 @@
-.contaner2{
-
-    /* width: 100vw;
-    height: 100vh; */
-    background-color: rgb(28, 36, 43);
-    opacity: 30%;
-
-}
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
 
 
-body > table {
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    background-color: rgb(17, 46, 100);
-}
+#myBoard{
 
-
-table#myBoard td{
-    width: 100px;
-    height: 100px;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    margin: auto;
     border-collapse: collapse;
-    text-align: center;
-    vertical-align: middle;
-    font: bold 36px ;
-}
-
-
-
- td#cell1, td#cell2, td#cell3, td#cell4, td#cell5, td#cell6 {
-    border-bottom: 3px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-}
-
-td#cell1, td#cell2, td#cell5, td#cell4, td#cell7, td#cell8 {
-    border-right: 3px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-
+    margin-right: auto;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    background-color: rgb(45, 55, 66);
+    
 } 
+  body {
+    margin: 0;
+    background-color: rgb(45, 55, 66);
+
+  }
+  
+  table#myBoard td{
+    border: 4px solid rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    background-color: rgb(17, 36, 65);
+    font: bold 36px ;
+    font-family: Trattatello,fantasy;
+    font-size: 50px;
+    color: #ffff;
+}
+
+table#myBoard td:hover{
+    background-color: rgb(51, 90, 126);
+}
 
 div#boardMessage {
     margin: 0.5em;
-    font: 24px sans-serif;
+    font: 50px sans-serif;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
 }
 
-div#reset{
-    margin-top: 5px;
-    width: 80px;
-    height: 50px;
-    color: rgb(22, 9, 97);
-    text-align: center;
-    border: solid rgb(15, 0, 68) 1px;
-    background-color: rgb(255, 255, 255);
-        border-radius: 40%;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
+div .b1 {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    color: #000;
+    padding: .25em .5em;
+    cursor: pointer;
+
 }
+div .b1:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
 
 div#reset:hover{
     background-color: rgb(42, 127, 184);
 }
 
-td:hover{
-    background-color: rgb(51, 90, 126);
-}
+
 
 .statuseDiv{
-    width: 50%;
+    width: 25%;
     float: left;
     text-align: center;
     margin: 0;
@@ -78,34 +82,73 @@ td:hover{
 }
 
 #contaner {
-
     width: 100%;
+    margin: 20px 0 100px;
+    padding: 5px;
+    background-color: rgb(45, 55, 66);
+    margin-left: 5px;
     flex-direction: row;
+    color: #ffff;
     justify-content: center;
     text-align: center;
 }
-
-body > div #player2{
-    text-align: left;
-    direction: rtl !important;
+.b1{
+    width: 50%;
+    float: left;
+    text-align: center;
     margin: 0;
     padding: 0;
-    float: center;
+}
+#draw{
+    text-align: center;
+    margin: 20px 70px 0;
+    padding: 20px 0 0 0;
+    justify-items: center;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-justify: inter-word;
+}
 
+body > div #player2{
+    text-align: right;
+    margin: 20px 20px 0 0;
+    padding: 20px 20px 0 0;
+    float: right;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-justify: inter-word;
 
 }
 
 body > div #player1{
-    text-align: right;
-    margin: 0;
-    padding: 0;
+    text-align: left;
+    margin: 20px 0 0 20px;
+    padding: 20px 0 0 20px;
+    float: left;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-justify: inter-word;
-
-
 }
 
-/* {
-        font-family: Trattatello,fantasy;
-} */
+.contaner2{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+#p2 ,#p1{
+    margin: 0 10px;
+}
+.contaner2.show{
+    display: flex;
+  }
+
 

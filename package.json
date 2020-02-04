@@ -1,0 +1,38 @@
+{
+  "name": "project-1",
+  "version": "1.0.0",
+  "descriptionk": "",
+  "main": "app.js",
+  "hosting": {
+  "public": "public",
+   "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "firestore": {
+      "rules": "firestore.rules",
+      "indexes": "firestore.indexes.json"
+    },
+    "functions": {
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vex-xcc/project-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vex-xcc/project-1/issues"
+  },
+  "homepage": "https://github.com/vex-xcc/project-1#readme"
+}
+
+
