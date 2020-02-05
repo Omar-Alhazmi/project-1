@@ -3,7 +3,7 @@
 *::before {
     box-sizing: border-box;
 }
-
+ 
 
 #myBoard {
 
@@ -17,13 +17,14 @@
     align-content: center;
     justify-items: center;
     align-items: center;
-    background-color: rgb(45, 55, 66);
+    background-color: rgb(167, 167, 167);
+    ;
 
 }
 
 body {
     margin: 0;
-    background-color: rgb(45, 55, 66);
+    background-color: rgb(49, 49, 49);
 
 }
 
@@ -35,8 +36,8 @@ table#myBoard td {
     position: relative;
     width: 150px;
     height: 150px;
-    cursor: pointer;
-    background-color: rgb(17, 36, 65);
+    cursor: pointer; 
+    background-color: rgb(44, 72, 92);
     font: bold 36px;
     font-family: Trattatello, fantasy;
     font-size: 50px;
@@ -44,7 +45,7 @@ table#myBoard td {
 }
 
 table#myBoard td:hover {
-    background-color: rgb(51, 90, 126);
+    background-color: rgb(46, 46, 46);
 }
 
 div#boardMessage {
@@ -85,7 +86,7 @@ div#reset:hover {
 #contaner {
     width: 100%;
     padding: 10px;
-    background-color: rgb(45, 55, 66);
+    background-color: rgb(49, 49, 49);
     margin-left: 5px;
     flex-direction: column;
     color: #ffff;
@@ -108,6 +109,27 @@ div#reset:hover {
     font-size: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-justify: inter-word;
+}
+
+th {
+    border: 4px solid #ffff;
+    color: #ffff;
+    font-size: large;
+    padding: 3px;
+    background-color: rgb(49, 49, 49);
+}
+
+#hed2 {
+    border-right: none;
+    border-left: none;
+}
+
+#hed1 {
+    border-right: none;
+}
+
+#hed3 {
+    border-left: none;
 }
 
 body>div #player2 {
@@ -167,6 +189,7 @@ body>div #player1 {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-justify: inter-word;
     }
+
     #draw {
         text-align: left;
         margin: 5px 0 5px 0;
@@ -175,7 +198,8 @@ body>div #player1 {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-justify: inter-word;
     }
-    body > div #player1 {
+
+    body>div #player1 {
         text-align: left;
         margin: 0;
         padding: 0;

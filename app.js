@@ -24,8 +24,14 @@ $(document).ready(function () {
     let player2WinsText = $('#p2');
     //  declaring variable  to push the winning Message
     const divShow = document.querySelector('#win');
+    let currentTurn  = $('#turn')
 
-    //create a checkWinner function with 3 argument and convert them to gather
+    //checkWinner take three argument and Comparative them 
+    //if all these arguments equal to 'X'
+    // then return 1
+    // else if all argument equal to 'O'
+    // then return -1
+    // else return 0
     //to use it in winningCase
     const checkWinner = function conditions(a, b, c) {
 
@@ -107,6 +113,7 @@ $(document).ready(function () {
         //reset player2Wins to 0
         player2Wins = 0;
         player2WinsText.text(player2Wins);
+        currentTurn.text('X')
     };
     //declaring a rfresh function to reset Game board
     const rfresh = function resetGame() {
@@ -118,6 +125,7 @@ $(document).ready(function () {
         divShow.classList.remove('show')
         $(".cells").unbind('click').one("click", main);
         $(".cells").text('');
+        currentTurn.text('X')
         const divMessage = $("#boardMessage");
         divMessage.css('color', 'gray');
         divMessage.text('');
@@ -142,7 +150,7 @@ $(document).ready(function () {
 
                 return;
             };
-
+            currentTurn.text('O')
             player1 = "X"
             //create event when player1 click 
             //the cell disply X
@@ -170,7 +178,7 @@ $(document).ready(function () {
 
                 return;
             };
-
+            currentTurn.text('X')
             player2 = 'O'
             //create event when player2 click 
             //the cell disply O
